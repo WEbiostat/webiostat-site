@@ -1,6 +1,17 @@
 {
-  "updated": "2026-09-18",
+  "updated": "2026-10-01",
   "fda": [
+    {
+      "id": "www-fda-gov-media-190505-download-attachment",
+      "title": "Use of Bayesian Methodology in Clinical Trials of Drug and Biological Products (January 2026)",
+      "source": "FDA — Office of Biostatistics, CDER",
+      "date": "2026-10-01",
+      "link": "https://www.fda.gov/media/190505/download?attachment",
+      "tag_zh": "貝氏統計",
+      "tag_en": "Bayesian Statistics",
+      "summary_zh": "FDA生物統計辦公室發布關於臨床試驗中貝氏方法應用的最新指引，涵蓋試驗設計、樣本數計算、適應性設計等核心統計議題。此指引為藥物及生物製品開發的監管統計實踐提供重要參考。",
+      "summary_en": "The FDA Office of Biostatistics releases updated guidance on Bayesian methodology applications in drug and biological product clinical trials, addressing trial design, sample size determination, and adaptive designs. This guidance is essential for sponsors implementing Bayesian approaches in regulatory submissions."
+    },
     {
       "id": "fda-bayesian-2026-01",
       "title": "Use of Bayesian Methodology in Clinical Trials of Drug and Biological Products (Draft Guidance)",
@@ -13,17 +24,6 @@
       "summary_en": "FDA published draft guidance on using Bayesian methodology in clinical trial design and analysis, describing how prior information can support statistical inference — intended to make trials more efficient and especially relevant for rare disease and pediatric programs with smaller populations."
     },
     {
-      "id": "fda-multiple-endpoints-2022-10",
-      "title": "Multiple Endpoints in Clinical Trials — Guidance for Industry",
-      "source": "FDA — Office of Biostatistics, CDER",
-      "date": "2022-10-01",
-      "link": "https://www.fda.gov/regulatory-information/search-fda-guidance-documents/multiple-endpoints-clinical-trials",
-      "tag_zh": "多重比較",
-      "tag_en": "Multiplicity",
-      "summary_zh": "FDA 正式指引說明臨床試驗中多重終點（multiple endpoints）的處理原則，涵蓋如何控制主要、次要等終點分析的型一誤差（Type I error），是設計統計分析策略時的核心參考文件。",
-      "summary_en": "FDA's finalized guidance on handling multiple endpoints in clinical trials, covering strategies to control Type I error across primary, secondary, and other endpoints — a core reference for statistical analysis strategy design."
-    },
-    {
       "id": "fda-covariate-adjustment-2023-05",
       "title": "Adjusting for Covariates in Randomized Clinical Trials for Drugs and Biological Products",
       "source": "FDA — Office of Biostatistics, CDER",
@@ -33,6 +33,17 @@
       "tag_en": "Trial Design",
       "summary_zh": "FDA 正式指引建議在隨機臨床試驗的主要與次要分析中，如何預先設定並調整基線共變量（covariates），以提升分析精確度並減少偏誤。",
       "summary_en": "Finalized FDA guidance recommending statistical approaches for pre-specifying and adjusting for baseline covariates in randomized trial primary and secondary analyses, to improve precision and reduce bias."
+    },
+    {
+      "id": "fda-multiple-endpoints-2022-10",
+      "title": "Multiple Endpoints in Clinical Trials — Guidance for Industry",
+      "source": "FDA — Office of Biostatistics, CDER",
+      "date": "2022-10-01",
+      "link": "https://www.fda.gov/regulatory-information/search-fda-guidance-documents/multiple-endpoints-clinical-trials",
+      "tag_zh": "多重比較",
+      "tag_en": "Multiplicity",
+      "summary_zh": "FDA 正式指引說明臨床試驗中多重終點（multiple endpoints）的處理原則，涵蓋如何控制主要、次要等終點分析的型一誤差（Type I error），是設計統計分析策略時的核心參考文件。",
+      "summary_en": "FDA's finalized guidance on handling multiple endpoints in clinical trials, covering strategies to control Type I error across primary, secondary, and other endpoints — a core reference for statistical analysis strategy design."
     }
   ],
   "taiwan": [
