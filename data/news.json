@@ -2,17 +2,6 @@
   "updated": "2026-10-01",
   "fda": [
     {
-      "id": "www-fda-gov-media-190505-download-attachment",
-      "title": "Use of Bayesian Methodology in Clinical Trials of Drug and Biological Products (January 2026)",
-      "source": "FDA — Office of Biostatistics, CDER",
-      "date": "2026-10-01",
-      "link": "https://www.fda.gov/media/190505/download?attachment",
-      "tag_zh": "貝氏統計",
-      "tag_en": "Bayesian Statistics",
-      "summary_zh": "FDA生物統計辦公室發布關於臨床試驗中貝氏方法應用的最新指引，涵蓋試驗設計、樣本數計算、適應性設計等核心統計議題。此指引為藥物及生物製品開發的監管統計實踐提供重要參考。",
-      "summary_en": "The FDA Office of Biostatistics releases updated guidance on Bayesian methodology applications in drug and biological product clinical trials, addressing trial design, sample size determination, and adaptive designs. This guidance is essential for sponsors implementing Bayesian approaches in regulatory submissions."
-    },
-    {
       "id": "fda-bayesian-2026-01",
       "title": "Use of Bayesian Methodology in Clinical Trials of Drug and Biological Products (Draft Guidance)",
       "source": "FDA — Office of Biostatistics, CDER",

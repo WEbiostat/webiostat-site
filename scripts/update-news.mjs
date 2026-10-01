@@ -126,6 +126,15 @@ If relevant is false, still return the shape but the other fields may be empty s
   return JSON.parse(jsonMatch ? jsonMatch[0] : text);
 }
 
+// Same document often appears under different URLs (guidance page vs. PDF
+// download) with suffixes like "(Draft Guidance)" or "(January 2026)".
+function titleKey(title) {
+  return String(title || '')
+    .toLowerCase()
+    .replace(/\([^)]*\)|（[^）]*）/g, '')
+    .replace(/[^a-z0-9一-鿿]+/g, '');
+}
+
 function slugify(input) {
   return String(input)
     .toLowerCase()
@@ -205,14 +214,19 @@ function mergeChannel(existing, newItems) {
 
 async function processChannel(channelName, candidates, existingItems) {
   const existingLinks = new Set(existingItems.map((i) => i.link));
-  const fresh = candidates.filter((c) => c.url && !existingLinks.has(c.url));
+  const existingTitles = new Set(existingItems.map((i) => titleKey(i.title)));
+  const fresh = candidates.filter(
+    (c) => c.url && !existingLinks.has(c.url) && !existingTitles.has(titleKey(c.title))
+  );
 
-  // De-dupe candidates from multiple sources by URL, then keyword pre-filter.
+  // De-dupe candidates from multiple sources by URL and title, then keyword pre-filter.
   const seen = new Set();
   const deduped = [];
   for (const c of fresh) {
-    if (seen.has(c.url)) continue;
+    const key = titleKey(c.title);
+    if (seen.has(c.url) || seen.has(key)) continue;
     seen.add(c.url);
+    seen.add(key);
     if (isRelevantByKeyword(`${c.title} ${c.snippet || ''}`)) deduped.push(c);
   }
 
