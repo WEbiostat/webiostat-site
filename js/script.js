@@ -13,10 +13,11 @@
     })
     .filter(Boolean);
   var track = document.querySelector('.process-track');
-  var tabs = Array.prototype.slice.call(document.querySelectorAll('.process-tab'));
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('#process .process-tab'));
   var prevBtn = document.querySelector('.process-arrow--prev');
   var nextBtn = document.querySelector('.process-arrow--next');
-  var panelCount = document.querySelectorAll('.process-panel').length;
+  var panels = Array.prototype.slice.call(document.querySelectorAll('.process-panel'));
+  var panelCount = panels.length;
 
   /* ---------------- Language toggle ---------------- */
   var STORAGE_KEY = 'we-lang';
@@ -125,16 +126,28 @@
   }, { passive: true });
 
   /* ---------------- Process carousel ---------------- */
+  // Swiping is native horizontal scroll with CSS scroll-snap; JS only syncs the
+  // tabs and fits the track height to the visible panel.
   var current = 0;
 
-  function goTo(index) {
-    if (!track) return;
-    current = Math.max(0, Math.min(panelCount - 1, index));
-    track.style.transform = 'translateX(-' + current * 100 + '%)';
+  function syncProcessHeight() {
+    if (track && panels[current]) track.style.height = panels[current].offsetHeight + 'px';
+  }
+
+  function setActive(index) {
+    current = index;
     tabs.forEach(function (tab, i) {
       tab.classList.toggle('is-active', i === current);
       tab.setAttribute('aria-selected', i === current ? 'true' : 'false');
     });
+    syncProcessHeight();
+  }
+
+  function goTo(index) {
+    if (!track) return;
+    index = Math.max(0, Math.min(panelCount - 1, index));
+    track.scrollTo({ left: index * track.clientWidth, behavior: 'smooth' });
+    setActive(index);
   }
 
   tabs.forEach(function (tab, i) {
@@ -144,16 +157,24 @@
   if (nextBtn) nextBtn.addEventListener('click', function () { goTo(current + 1); });
 
   if (track) {
-    var startX = null;
-    track.addEventListener('touchstart', function (e) { startX = e.touches[0].clientX; }, { passive: true });
-    track.addEventListener('touchend', function (e) {
-      if (startX === null) return;
-      var deltaX = e.changedTouches[0].clientX - startX;
-      if (Math.abs(deltaX) > 40) {
-        goTo(current + (deltaX < 0 ? 1 : -1));
-      }
-      startX = null;
-    });
+    var processTicking = false;
+    track.addEventListener('scroll', function () {
+      if (processTicking) return;
+      processTicking = true;
+      window.requestAnimationFrame(function () {
+        processTicking = false;
+        var index = Math.round(track.scrollLeft / track.clientWidth);
+        if (index !== current && index >= 0 && index < panelCount) setActive(index);
+      });
+    }, { passive: true });
+
+    // Panel heights change with viewport width, language and web-font loading.
+    if ('ResizeObserver' in window) {
+      var panelObserver = new ResizeObserver(syncProcessHeight);
+      panels.forEach(function (panel) { panelObserver.observe(panel); });
+    } else {
+      window.addEventListener('resize', syncProcessHeight);
+    }
   }
 
   /* ---------------- Share / News ---------------- */
@@ -232,6 +253,6 @@
   applyLang(getSavedLang() || 'zh');
   onScrollHeader();
   updateActiveSection();
-  goTo(0);
+  setActive(0);
   loadNewsData();
 })();

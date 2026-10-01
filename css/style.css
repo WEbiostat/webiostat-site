@@ -448,14 +448,22 @@ strong { color: var(--color-primary); font-weight: 700; }
 
 .process-track {
   display: flex;
-  transition: transform 0.4s ease;
-  touch-action: pan-y;
+  align-items: flex-start;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  transition: height 0.3s ease;
 }
+.process-track::-webkit-scrollbar { display: none; }
 
 .process-panel {
   flex: 0 0 100%;
   max-width: 100%;
   padding: 28px;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 
 /* ---- Process flow content (native HTML, replaces static diagrams) ---- */
