@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Monthly regulatory/statistical news updater for the Share section.
+ * Quarterly regulatory/statistical news updater for the Share section.
  *
  * Pipeline: Firecrawl fetches candidate articles -> keyword pre-filter ->
  * Claude API judges relevance + writes bilingual tag/summary -> merge into
