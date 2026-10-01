@@ -126,28 +126,25 @@
   }, { passive: true });
 
   /* ---------------- Process carousel ---------------- */
-  // Swiping is native horizontal scroll with CSS scroll-snap; JS only syncs the
-  // tabs and fits the track height to the visible panel.
+  // One swipe moves at most one panel. The panel follows the finger once the
+  // gesture is clearly horizontal; mostly-vertical gestures are left to page scroll.
   var current = 0;
+  var SWIPE_AXIS_PX = 10;      // movement before deciding horizontal vs vertical
+  var SWIPE_THRESHOLD_PX = 60; // drag distance needed to change panel
 
   function syncProcessHeight() {
     if (track && panels[current]) track.style.height = panels[current].offsetHeight + 'px';
   }
 
-  function setActive(index) {
-    current = index;
+  function goTo(index) {
+    if (!track) return;
+    current = Math.max(0, Math.min(panelCount - 1, index));
+    track.style.transform = 'translateX(-' + current * 100 + '%)';
     tabs.forEach(function (tab, i) {
       tab.classList.toggle('is-active', i === current);
       tab.setAttribute('aria-selected', i === current ? 'true' : 'false');
     });
     syncProcessHeight();
-  }
-
-  function goTo(index) {
-    if (!track) return;
-    index = Math.max(0, Math.min(panelCount - 1, index));
-    track.scrollTo({ left: index * track.clientWidth, behavior: 'smooth' });
-    setActive(index);
   }
 
   tabs.forEach(function (tab, i) {
@@ -157,16 +154,44 @@
   if (nextBtn) nextBtn.addEventListener('click', function () { goTo(current + 1); });
 
   if (track) {
-    var processTicking = false;
-    track.addEventListener('scroll', function () {
-      if (processTicking) return;
-      processTicking = true;
-      window.requestAnimationFrame(function () {
-        processTicking = false;
-        var index = Math.round(track.scrollLeft / track.clientWidth);
-        if (index !== current && index >= 0 && index < panelCount) setActive(index);
-      });
-    }, { passive: true });
+    var drag = null;
+
+    track.addEventListener('pointerdown', function (e) {
+      if (e.pointerType === 'mouse') return;
+      drag = { id: e.pointerId, x: e.clientX, y: e.clientY, dx: 0, axis: null };
+    });
+
+    track.addEventListener('pointermove', function (e) {
+      if (!drag || e.pointerId !== drag.id) return;
+      var dx = e.clientX - drag.x;
+      var dy = e.clientY - drag.y;
+      if (!drag.axis) {
+        if (Math.abs(dx) < SWIPE_AXIS_PX && Math.abs(dy) < SWIPE_AXIS_PX) return;
+        drag.axis = Math.abs(dx) > Math.abs(dy) * 1.2 ? 'x' : 'y';
+        if (drag.axis === 'x') {
+          track.classList.add('is-dragging');
+          track.setPointerCapture(e.pointerId);
+        }
+      }
+      if (drag.axis !== 'x') return;
+      var atEdge = (current === 0 && dx > 0) || (current === panelCount - 1 && dx < 0);
+      drag.dx = atEdge ? dx / 3 : dx;
+      track.style.transform = 'translateX(calc(-' + current * 100 + '% + ' + drag.dx + 'px))';
+    });
+
+    function endDrag(e) {
+      if (!drag || e.pointerId !== drag.id) return;
+      var wasHorizontal = drag.axis === 'x';
+      var dx = drag.dx;
+      drag = null;
+      if (!wasHorizontal) return;
+      track.classList.remove('is-dragging');
+      var step = 0;
+      if (e.type === 'pointerup' && Math.abs(dx) >= SWIPE_THRESHOLD_PX) step = dx < 0 ? 1 : -1;
+      goTo(current + step);
+    }
+    track.addEventListener('pointerup', endDrag);
+    track.addEventListener('pointercancel', endDrag);
 
     // Panel heights change with viewport width, language and web-font loading.
     if ('ResizeObserver' in window) {
@@ -253,6 +278,6 @@
   applyLang(getSavedLang() || 'zh');
   onScrollHeader();
   updateActiveSection();
-  setActive(0);
+  goTo(0);
   loadNewsData();
 })();
