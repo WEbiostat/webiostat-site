@@ -12,6 +12,7 @@
       return document.getElementById(id);
     })
     .filter(Boolean);
+  var processViewport = document.querySelector('.process-viewport');
   var track = document.querySelector('.process-track');
   var tabs = Array.prototype.slice.call(document.querySelectorAll('#process .process-tab'));
   var prevBtn = document.querySelector('.process-arrow--prev');
@@ -156,12 +157,12 @@
   if (track) {
     var drag = null;
 
-    track.addEventListener('pointerdown', function (e) {
+    processViewport.addEventListener('pointerdown', function (e) {
       if (e.pointerType === 'mouse') return;
       drag = { id: e.pointerId, x: e.clientX, y: e.clientY, dx: 0, axis: null };
     });
 
-    track.addEventListener('pointermove', function (e) {
+    processViewport.addEventListener('pointermove', function (e) {
       if (!drag || e.pointerId !== drag.id) return;
       var dx = e.clientX - drag.x;
       var dy = e.clientY - drag.y;
@@ -170,7 +171,7 @@
         drag.axis = Math.abs(dx) > Math.abs(dy) * 1.2 ? 'x' : 'y';
         if (drag.axis === 'x') {
           track.classList.add('is-dragging');
-          track.setPointerCapture(e.pointerId);
+          processViewport.setPointerCapture(e.pointerId);
         }
       }
       if (drag.axis !== 'x') return;
@@ -190,8 +191,8 @@
       if (e.type === 'pointerup' && Math.abs(dx) >= SWIPE_THRESHOLD_PX) step = dx < 0 ? 1 : -1;
       goTo(current + step);
     }
-    track.addEventListener('pointerup', endDrag);
-    track.addEventListener('pointercancel', endDrag);
+    processViewport.addEventListener('pointerup', endDrag);
+    processViewport.addEventListener('pointercancel', endDrag);
 
     // Panel heights change with viewport width, language and web-font loading.
     if ('ResizeObserver' in window) {

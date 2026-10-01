@@ -444,13 +444,15 @@ strong { color: var(--color-primary); font-weight: 700; }
   border-radius: var(--radius);
   background: var(--color-surface);
   box-shadow: var(--shadow-md);
+  /* On the static viewport, not the translated track: iOS Safari keeps
+     touch-action hit regions at a transformed element's untranslated position. */
+  touch-action: pan-y;
 }
 
 .process-track {
   display: flex;
   align-items: flex-start;
   transition: transform 0.35s ease, height 0.3s ease;
-  touch-action: pan-y;
 }
 .process-track.is-dragging { transition: none; }
 
