@@ -1,0 +1,22 @@
+# W.E. Independent Biostatistics Consultant
+
+> Clinical biostatistics consulting for biotech and pharma sponsors, led personally by a senior biostatistician with 13+ years of experience across 30+ global clinical trial protocols (Phase 1–4).
+
+W.E. offers end-to-end biostatistics consulting for clinical trials, delivered personally by a senior statistician (not delegated to junior staff), with hands-on statistical-programming experience and AI-augmented, human-verified workflows.
+
+## Services
+- Pre-Study Consulting: CRO quote & budget review, general statistical consulting
+- Study Design & Planning: sample size / power calculation, statistical method & analysis strategy design, protocol statistical section development, Statistical Analysis Plan (SAP) development, TFL mock-up / shell development, data specification (SPEC) development
+- Data Standards & Management: SDTM mapping & specification, ADaM dataset design & specification, data management advisory
+- Programming & Analysis: statistical programming (SAS/R), statistical analysis execution
+- Quality Review: statistical document & output review (Protocol/SAP/CSR, etc.)
+- Real-World Data Analysis: claims database analysis, retrospective study design & publication support
+
+## Therapeutic areas
+Oncology, Infectious Disease & Vaccines, Immunology/Rheumatology/Dermatology, Diagnostic Imaging, Rare Diseases, Ophthalmology, Metabolic Disease, Cell & Gene Therapy, Pulmonary Disease.
+
+## Special populations
+Pediatric/Adolescent, Geriatric, Pregnant Women & Infants, Healthy Volunteers.
+
+## Contact
+Email: Contact@webiostat.com

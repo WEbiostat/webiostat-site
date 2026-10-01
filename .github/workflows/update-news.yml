@@ -1,0 +1,48 @@
+name: Update regulatory & statistical news
+
+# Monthly automation for the Share section (#share) on the W.E. website.
+# Requires two repository secrets (Settings -> Secrets and variables -> Actions):
+#   FIRECRAWL_API_KEY  - https://www.firecrawl.dev/
+#   ANTHROPIC_API_KEY  - https://console.anthropic.com/
+# Pushing the updated data/news.json (and index.html fallback) to the default
+# branch is enough to trigger a GitHub Pages redeploy, whether Pages serves
+# directly from the branch or via a separate build-and-deploy workflow.
+
+on:
+  schedule:
+    # 02:00 UTC on the 1st of every month
+    - cron: "0 2 1 * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  update-news:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Run news updater
+        env:
+          FIRECRAWL_API_KEY: ${{ secrets.FIRECRAWL_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node scripts/update-news.mjs
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet -- data/news.json index.html; then
+            echo "No news updates this month."
+          else
+            git add data/news.json index.html
+            git commit -m "chore: monthly regulatory/statistical news update"
+            git push
+          fi

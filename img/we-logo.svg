@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="270 115 650 330" role="img" aria-label="W.E.">
+  <!-- W.E. mark redrawn from "Web page material/WE logo.png" (navy strokes, mint dots) -->
+  <g fill="none" stroke="#0B2545" stroke-width="24" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M303 142 L376 398 L451 202 L521 398 L592 142"/>
+    <path d="M867 145 H712 Q693 145 693 164 V382 Q693 401 712 401 H867"/>
+    <path d="M693 273 H819"/>
+  </g>
+  <g fill="#2EC4B6">
+    <circle cx="376" cy="403" r="16"/>
+    <circle cx="521" cy="403" r="16"/>
+    <circle cx="619" cy="423" r="11"/>
+    <circle cx="867" cy="146" r="13"/>
+    <circle cx="819" cy="273" r="13"/>
+    <circle cx="867" cy="401" r="13"/>
+    <circle cx="892" cy="423" r="11"/>
+  </g>
+</svg>

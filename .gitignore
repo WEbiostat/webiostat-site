@@ -1,0 +1,4 @@
+# Private source materials (CV, protocol list, design notes) — not part of the website
+Web page material/
+*.xlsx
+*.docx

@@ -1,0 +1,51 @@
+{
+  "updated": "2026-09-18",
+  "fda": [
+    {
+      "id": "fda-bayesian-2026-01",
+      "title": "Use of Bayesian Methodology in Clinical Trials of Drug and Biological Products (Draft Guidance)",
+      "source": "FDA — Office of Biostatistics, CDER",
+      "date": "2026-01-12",
+      "link": "https://www.fda.gov/regulatory-information/search-fda-guidance-documents/use-bayesian-methodology-clinical-trials-drug-and-biological-products",
+      "tag_zh": "貝氏統計",
+      "tag_en": "Bayesian Statistics",
+      "summary_zh": "FDA 發布貝氏方法（Bayesian methodology）用於臨床試驗設計與分析的草案指引，說明如何運用先驗資訊支援試驗推論，盼協助試驗更有效率、加速藥物上市，對罕見疾病與兒科等小族群試驗尤其重要。",
+      "summary_en": "FDA published draft guidance on using Bayesian methodology in clinical trial design and analysis, describing how prior information can support statistical inference — intended to make trials more efficient and especially relevant for rare disease and pediatric programs with smaller populations."
+    },
+    {
+      "id": "fda-multiple-endpoints-2022-10",
+      "title": "Multiple Endpoints in Clinical Trials — Guidance for Industry",
+      "source": "FDA — Office of Biostatistics, CDER",
+      "date": "2022-10-01",
+      "link": "https://www.fda.gov/regulatory-information/search-fda-guidance-documents/multiple-endpoints-clinical-trials",
+      "tag_zh": "多重比較",
+      "tag_en": "Multiplicity",
+      "summary_zh": "FDA 正式指引說明臨床試驗中多重終點（multiple endpoints）的處理原則，涵蓋如何控制主要、次要等終點分析的型一誤差（Type I error），是設計統計分析策略時的核心參考文件。",
+      "summary_en": "FDA's finalized guidance on handling multiple endpoints in clinical trials, covering strategies to control Type I error across primary, secondary, and other endpoints — a core reference for statistical analysis strategy design."
+    },
+    {
+      "id": "fda-covariate-adjustment-2023-05",
+      "title": "Adjusting for Covariates in Randomized Clinical Trials for Drugs and Biological Products",
+      "source": "FDA — Office of Biostatistics, CDER",
+      "date": "2023-05-01",
+      "link": "https://www.fda.gov/regulatory-information/search-fda-guidance-documents/adjusting-covariates-randomized-clinical-trials-drugs-and-biological-products",
+      "tag_zh": "試驗設計",
+      "tag_en": "Trial Design",
+      "summary_zh": "FDA 正式指引建議在隨機臨床試驗的主要與次要分析中，如何預先設定並調整基線共變量（covariates），以提升分析精確度並減少偏誤。",
+      "summary_en": "Finalized FDA guidance recommending statistical approaches for pre-specifying and adjusting for baseline covariates in randomized trial primary and secondary analyses, to improve precision and reduce bias."
+    }
+  ],
+  "taiwan": [
+    {
+      "id": "cde-2026-02-stat-report",
+      "title": "公告114年度CDE受TFDA委託執行IND、BSE、NDA技術資料評估成果統計分析報告",
+      "source": "財團法人醫藥品查驗中心（CDE）",
+      "date": "2026-02-11",
+      "link": "https://www.cde.org.tw/umbraco/surface/Ini/CountAndRedirectUrl?nodeId=73633",
+      "tag_zh": "統計分析報告",
+      "tag_en": "Statistical Analysis Report",
+      "summary_zh": "CDE 公告 114 年度受 TFDA 委託執行 IND、BSE、NDA 技術資料評估成果之統計分析報告，彙整審查案件的統計數據與趨勢，可作為了解國內新藥審查現況的參考資料。",
+      "summary_en": "CDE announced its statistical analysis report on IND, BSE, and NDA technical data evaluations commissioned by Taiwan FDA for 2025, compiling statistics and trends from regulatory review cases — a useful reference for understanding the current state of drug review in Taiwan."
+    }
+  ]
+}
