@@ -13,7 +13,7 @@ W.E. offers end-to-end biostatistics consulting for clinical trials, delivered p
 - Real-World Data Analysis: claims database analysis, retrospective study design & publication support
 
 ## Therapeutic areas
-Oncology, Infectious Disease & Vaccines, Immunology/Rheumatology/Dermatology, Diagnostic Imaging, Rare Diseases, Ophthalmology, Metabolic Disease, Cell & Gene Therapy, Pulmonary Disease.
+Oncology, Infectious Disease & Vaccines, Immunology/Rheumatology/Dermatology, Diagnostic Imaging, Rare Diseases, Ophthalmology, Metabolic Disease, Obesity, Cell & Gene Therapy, Pulmonary Disease.
 
 ## Special populations
 Pediatric/Adolescent, Geriatric, Pregnant Women & Infants, Healthy Volunteers.
